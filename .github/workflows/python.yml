@@ -33,7 +33,6 @@ jobs:
           ECR_REPOSITORY: sample-python-web-app
           IMAGE_TAG: python_Sample
         run: |
-          
           RUN apt-get update && \
           apt-get install -y --no-install-recommends \
           build-essential \
@@ -42,8 +41,6 @@ jobs:
           python3-dev && \
           apt-get clean && \
           rm -rf /var/lib/apt/lists/*
-
           RUN pip3 install --break-system-packages pipenv
-
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
